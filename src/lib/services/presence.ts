@@ -38,13 +38,13 @@ export const presenceService = {
 
         if (!courseEvent) {
           this.courseLos.push(nextCourseEvent);
+          coursesOnlineList.value.push(nextCourseEvent);
           this.courseEventMap.set(nextCourseEvent.courseId, nextCourseEvent);
+          coursesOnline.value = this.courseLos.length;
         } else {
           refreshLoEvent(courseEvent, nextCourseEvent);
+          coursesOnlineList.value = [...this.courseLos];
         }
-        // this.courseLos = [...this.courseLos];
-        coursesOnlineList.value = [...this.courseLos];
-        coursesOnline.value = this.courseLos.length;
 
         const nextStudentEvent = JSON.parse(event.data);
         let studentEvent = this.allStudentEventMap.get(nextStudentEvent.user.id);
