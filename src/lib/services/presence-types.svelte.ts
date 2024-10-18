@@ -25,3 +25,16 @@ export class LoRecord {
     Object.assign(this, data);
   }
 }
+
+export function refreshLoRecord(loEvent: LoRecord, nextLoEvent: LoRecord) {
+  loEvent.loRoute = `https://tutors.dev${nextLoEvent.loRoute}`;
+  loEvent.title = nextLoEvent.title;
+  loEvent.type = nextLoEvent.type;
+  if (nextLoEvent.icon) {
+    loEvent.icon = nextLoEvent.icon;
+    loEvent.img = undefined;
+  } else {
+    loEvent.img = nextLoEvent.img;
+    loEvent.icon = undefined;
+  }
+}
