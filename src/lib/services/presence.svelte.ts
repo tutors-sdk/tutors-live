@@ -18,6 +18,7 @@ if (PUBLIC_party_kit_main_room !== "XXX") {
 export const presenceService = {
   studentEventMap: new Map<string, LoRecord>(),
   courseEventMap: new Map<string, LoRecord>(),
+  studentByCourseEventMap: new Map<string, LoRecord[]>(),
 
   partyKitCourse: <PartySocket>{},
 
