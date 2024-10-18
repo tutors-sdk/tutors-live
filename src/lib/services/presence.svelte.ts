@@ -1,6 +1,6 @@
 import PartySocket from "partysocket";
 import { coursesOnlineList, studentsOnlineList } from "$lib/runes";
-import type { LoEvent } from "./types/presence";
+import type { LoEvent } from "./presence-types";
 import { getKeys } from "$lib/environment";
 import { PUBLIC_party_kit_main_room } from "$env/static/public";
 

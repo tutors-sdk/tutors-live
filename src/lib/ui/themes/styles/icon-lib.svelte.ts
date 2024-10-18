@@ -1,5 +1,5 @@
 import { currentTheme } from "$lib/runes";
-import type { IconType } from "$lib/services/models/lo-types";
+import type { IconType } from "$lib/services/presence-types";
 import { FluentIconLib } from "../icons/fluent-icons";
 import { HeroIconLib } from "../icons/hero-icons";
 

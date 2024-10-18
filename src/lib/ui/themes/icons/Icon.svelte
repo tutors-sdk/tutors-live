@@ -34,11 +34,11 @@
 {#if type}
   {#if link}
     <a class="btn btn-sm" {target} href={link} title={tip}>
-      <Icon icon={getIcon(type).type} color={legacyIconColour(getIcon(type).color)} {width} {height} />
+      <Icon icon={getIcon(type)?.type} color={legacyIconColour(getIcon(type).color)} {width} {height} />
       {text}
     </a>
   {:else}
-    <Icon icon={getIcon(type).type} color={legacyIconColour(getIcon(type).color)} {width} {height} />
+    <Icon icon={getIcon(type)?.type} color={legacyIconColour(getIcon(type).color)} {width} {height} />
   {/if}
 {:else if link}
   <a {target} href={link} title={tip}>

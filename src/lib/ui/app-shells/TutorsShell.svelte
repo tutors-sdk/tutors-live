@@ -15,8 +15,9 @@
       </svelte:fragment>
       <slot name="header" />
       <svelte:fragment slot="trail">
-        <span class="divider-vertical h-10 hidden lg:block" />
+        <span class="divider-vertical h-10 hidden lg:block"></span>
         <LayoutMenu />
+        <span class="divider-vertical h-10 hidden lg:block"></span>
       </svelte:fragment>
     </AppBar>
   </svelte:fragment>
