@@ -1,5 +1,5 @@
 import PartySocket from "partysocket";
-import { coursesOnline, coursesOnlineList, allStudentsOnlineList, allStudentsOnline } from "$lib/runes";
+import { coursesOnlineList, studentsOnlineList } from "$lib/runes";
 import type { LoEvent } from "./types/presence";
 import { getKeys } from "$lib/environment";
 import { PUBLIC_party_kit_main_room } from "$env/static/public";
@@ -40,7 +40,6 @@ export const presenceService = {
           this.courseLos.push(nextCourseEvent);
           coursesOnlineList.value.push(nextCourseEvent);
           this.courseEventMap.set(nextCourseEvent.courseId, nextCourseEvent);
-          coursesOnline.value = this.courseLos.length;
         } else {
           refreshLoEvent(courseEvent, nextCourseEvent);
           coursesOnlineList.value = [...this.courseLos];
@@ -54,9 +53,7 @@ export const presenceService = {
         } else {
           refreshLoEvent(studentEvent, nextStudentEvent);
         }
-        // this.allStudentLos = [...this.allStudentLos];
-        allStudentsOnlineList.value = [...this.allStudentLos];
-        allStudentsOnline.value = this.allStudentLos.length;
+        studentsOnlineList.value = [...this.allStudentLos];
       } catch (e) {
         console.log(e);
       }

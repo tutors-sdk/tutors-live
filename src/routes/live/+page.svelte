@@ -1,9 +1,9 @@
 <script lang="ts">
   import "../../app.postcss";
   import TutorsShell from "$lib/ui/app-shells/TutorsShell.svelte";
-  import { presenceService } from "$lib/services/presence";
+  import { presenceService } from "$lib/services/presence.svelte";
   import AllCoursePresence from "$lib/ui/time/AllCoursePresence.svelte";
-  import { allStudentsOnline, coursesOnline } from "$lib/runes";
+  import { studentsOnlineList, coursesOnlineList } from "$lib/runes";
   import Metric from "$lib/ui/time/Metric.svelte";
   import { SlideToggle } from "@skeletonlabs/skeleton";
   import AllStudentPresence from "$lib/ui/time/AllStudentPresence.svelte";
@@ -33,8 +33,8 @@
   <div slot="header" class="hidden md:inline-block w-full">
     <div class="flex justify-end">
       <SlideToggle on:click={switchMode} name="slider-label" background="bg-surface-300 dark:bg-surface-700">{listModeStr}</SlideToggle>
-      <Metric value={coursesOnline.value} title="Active Modules" />
-      <Metric value={allStudentsOnline.value} title="Active Students" />
+      <Metric value={coursesOnlineList.value.length} title="Active Modules" />
+      <Metric value={studentsOnlineList.value.length} title="Active Students" />
     </div>
   </div>
   {#if listByCourse}
