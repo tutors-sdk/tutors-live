@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { coursesOnlineList } from "$lib/runes";
+  import { presenceService } from "$lib/services/presence.svelte";
   import LiveCourseCard from "./LiveCourseCard.svelte";
 </script>
 
 <div class="flex flex-wrap justify-center">
-  {#each coursesOnlineList.value as lo}
+  {#each presenceService.coursesOnlineList.value as lo}
     <LiveCourseCard {lo} />
   {/each}
 </div>

@@ -1,8 +1,8 @@
 import PartySocket from "partysocket";
-import { coursesOnlineList, studentsOnlineList } from "$lib/runes";
 import { LoRecord, refreshLoRecord } from "./presence-types.svelte";
 import { getKeys } from "$lib/environment";
 import { PUBLIC_party_kit_main_room } from "$env/static/public";
+import { rune } from "./utils/runes.svelte";
 
 const partyKitServer = getKeys().partyKit.mainRoom;
 
@@ -16,6 +16,9 @@ if (PUBLIC_party_kit_main_room !== "XXX") {
 }
 
 export const presenceService = {
+  coursesOnlineList: rune<LoRecord[]>([]),
+  studentsOnlineList: rune<LoRecord[]>([]),
+
   studentEventMap: new Map<string, LoRecord>(),
   courseEventMap: new Map<string, LoRecord>(),
   studentByCourseEventMap: new Map<string, Map<string, LoRecord>>(),
@@ -43,7 +46,7 @@ export const presenceService = {
     let studentEvent = this.studentEventMap.get(event.user.id);
     if (!studentEvent) {
       const latestLo = new LoRecord(event);
-      studentsOnlineList.value.push(latestLo);
+      this.studentsOnlineList.value.push(latestLo);
       this.studentEventMap.set(event.user.id, latestLo);
     } else {
       refreshLoRecord(studentEvent, event);
@@ -54,7 +57,7 @@ export const presenceService = {
     let courseEvent = this.courseEventMap.get(event.courseId);
     if (!courseEvent) {
       const latestLo = new LoRecord(event);
-      coursesOnlineList.value.push(latestLo);
+      this.coursesOnlineList.value.push(latestLo);
       this.courseEventMap.set(event.courseId, latestLo);
     } else {
       refreshLoRecord(courseEvent, event);

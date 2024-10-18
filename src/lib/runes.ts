@@ -1,12 +1,8 @@
 import { rune } from "./services/utils/runes.svelte";
-import type { LoEvent, LoRecord } from "./services/presence-types.svelte";
 
 export const layout = rune("expanded");
 
 export const currentTheme = rune("tutors");
-
-export const coursesOnlineList = rune<LoRecord[]>([]);
-export const studentsOnlineList = rune<LoRecord[]>([]);
 
 export const headingText = rune("!text-lg font-semibold");
 export const cardWidths = rune("w-60 h-[21rem]");
