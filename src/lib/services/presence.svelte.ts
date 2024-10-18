@@ -49,11 +49,12 @@ export const presenceService = {
         let studentEvent = this.allStudentEventMap.get(nextStudentEvent.user.id);
         if (!studentEvent) {
           this.allStudentLos.push(nextStudentEvent);
+          studentsOnlineList.value.push(nextStudentEvent);
           this.allStudentEventMap.set(nextStudentEvent.user.id, nextStudentEvent);
         } else {
           refreshLoEvent(studentEvent, nextStudentEvent);
+          studentsOnlineList.value = [...this.allStudentLos];
         }
-        studentsOnlineList.value = [...this.allStudentLos];
       } catch (e) {
         console.log(e);
       }
