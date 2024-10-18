@@ -18,9 +18,26 @@ if (PUBLIC_party_kit_main_room !== "XXX") {
 export const presenceService = {
   studentEventMap: new Map<string, LoRecord>(),
   courseEventMap: new Map<string, LoRecord>(),
-  studentByCourseEventMap: new Map<string, LoRecord[]>(),
+  studentByCourseEventMap: new Map<string, Map<string, LoRecord>>(),
 
   partyKitCourse: <PartySocket>{},
+
+  groupedStudentListener(event: any) {
+    let courseGroup = this.studentByCourseEventMap.get(event.courseId);
+    if (!courseGroup) {
+      const studentMap = new Map<string, LoRecord>();
+      const latestLo = new LoRecord(event);
+      studentMap.set(event.user.id, latestLo);
+      this.studentByCourseEventMap.set(event.courseId, studentMap);
+    } else {
+      const loStudent = courseGroup.get(event.user.id);
+      if (loStudent) {
+        refreshLoRecord(loStudent, event);
+      } else {
+        courseGroup.set(event.user.id, new LoRecord(event));
+      }
+    }
+  },
 
   studentListener(event: any) {
     let studentEvent = this.studentEventMap.get(event.user.id);
@@ -48,6 +65,7 @@ export const presenceService = {
       const nextCourseEvent = JSON.parse(event.data);
       this.courseListener(nextCourseEvent);
       this.studentListener(nextCourseEvent);
+      this.groupedStudentListener(nextCourseEvent);
     } catch (e) {
       console.log(e);
     }
