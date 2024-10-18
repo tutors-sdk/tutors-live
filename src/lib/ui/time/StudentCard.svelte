@@ -2,7 +2,7 @@
   import { Avatar } from "@skeletonlabs/skeleton";
   import Iconify from "@iconify/svelte";
   import { cardTransition } from "$lib/ui/animations";
-  import type { LoEvent } from "$lib/services/presence-types";
+  import type { LoEvent } from "$lib/services/presence-types.svelte";
   import Icon from "$lib/ui/themes/icons/Icon.svelte";
   import { avatarWidth, cardWidths, headingText, iconHeight, imageHeight, textSize } from "$lib/runes";
 

@@ -1,6 +1,6 @@
 import PartySocket from "partysocket";
 import { coursesOnlineList, studentsOnlineList } from "$lib/runes";
-import type { LoEvent } from "./presence-types";
+import { LoRecord } from "./presence-types.svelte";
 import { getKeys } from "$lib/environment";
 import { PUBLIC_party_kit_main_room } from "$env/static/public";
 
@@ -16,16 +16,8 @@ if (PUBLIC_party_kit_main_room !== "XXX") {
 }
 
 export const presenceService = {
-  studentEventMap: new Map<string, LoEvent>(),
-  studentLos: new Array<LoEvent>(),
-
-  courseEventMap: new Map<string, LoEvent>(),
-  courseLos: new Array<LoEvent>(),
-
-  allStudentEventMap: new Map<string, LoEvent>(),
-  allStudentLos: new Array<LoEvent>(),
-
-  currentUserId: "",
+  studentEventMap: new Map<string, LoRecord>(),
+  courseEventMap: new Map<string, LoRecord>(),
 
   partyKitCourse: <PartySocket>{},
 
@@ -35,25 +27,21 @@ export const presenceService = {
         const nextCourseEvent = JSON.parse(event.data);
 
         let courseEvent = this.courseEventMap.get(nextCourseEvent.courseId);
-
         if (!courseEvent) {
-          this.courseLos.push(nextCourseEvent);
-          coursesOnlineList.value.push(nextCourseEvent);
-          this.courseEventMap.set(nextCourseEvent.courseId, nextCourseEvent);
+          const latestLo = new LoRecord(nextCourseEvent);
+          coursesOnlineList.value.push(latestLo);
+          this.courseEventMap.set(nextCourseEvent.courseId, latestLo);
         } else {
-          refreshLoEvent(courseEvent, nextCourseEvent);
-          coursesOnlineList.value = [...this.courseLos];
+          Object.assign(courseEvent, nextCourseEvent);
         }
 
-        const nextStudentEvent = JSON.parse(event.data);
-        let studentEvent = this.allStudentEventMap.get(nextStudentEvent.user.id);
+        let studentEvent = this.studentEventMap.get(nextCourseEvent.user.id);
         if (!studentEvent) {
-          this.allStudentLos.push(nextStudentEvent);
-          studentsOnlineList.value.push(nextStudentEvent);
-          this.allStudentEventMap.set(nextStudentEvent.user.id, nextStudentEvent);
+          const latestLo = new LoRecord(nextCourseEvent);
+          studentsOnlineList.value.push(latestLo);
+          this.studentEventMap.set(nextCourseEvent.user.id, latestLo);
         } else {
-          refreshLoEvent(studentEvent, nextStudentEvent);
-          studentsOnlineList.value = [...this.allStudentLos];
+          Object.assign(studentEvent, nextCourseEvent);
         }
       } catch (e) {
         console.log(e);
@@ -61,16 +49,3 @@ export const presenceService = {
     });
   }
 };
-
-function refreshLoEvent(loEvent: LoEvent, nextLoEvent: LoEvent) {
-  loEvent.loRoute = `https://tutors.dev${nextLoEvent.loRoute}`;
-  loEvent.title = nextLoEvent.title;
-  loEvent.type = nextLoEvent.type;
-  if (nextLoEvent.icon) {
-    loEvent.icon = nextLoEvent.icon;
-    loEvent.img = undefined;
-  } else {
-    loEvent.img = nextLoEvent.img;
-    loEvent.icon = undefined;
-  }
-}
