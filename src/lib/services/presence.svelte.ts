@@ -18,6 +18,7 @@ if (PUBLIC_party_kit_main_room !== "XXX") {
 export const presenceService = {
   coursesOnlineList: rune<LoRecord[]>([]),
   studentsOnlineList: rune<LoRecord[]>([]),
+  studentsByCourseList: rune<LoRecord[][]>([]),
 
   studentEventMap: new Map<string, LoRecord>(),
   courseEventMap: new Map<string, LoRecord>(),
