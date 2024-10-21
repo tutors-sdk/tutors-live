@@ -2,10 +2,10 @@
   import Iconify from "@iconify/svelte";
   import { Avatar } from "@skeletonlabs/skeleton";
   import { cardTransition } from "$lib/ui/animations";
-  import { type LoEvent } from "$lib/services/presence-types.svelte";
+  import { type LoRecord } from "$lib/services/presence-types.svelte";
   import { cardWidths, headingText, iconHeight, imageHeight, textSize } from "$lib/runes";
 
-  export let lo: LoEvent;
+  export let lo: LoRecord;
   let target = "_blank";
 </script>
 

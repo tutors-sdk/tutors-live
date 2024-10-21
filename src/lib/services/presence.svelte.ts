@@ -27,18 +27,17 @@ export const presenceService = {
   partyKitCourse: <PartySocket>{},
 
   groupedStudentListener(event: any) {
-    let courseGroup = this.studentByCourseEventMap.get(event.courseId);
-    if (!courseGroup) {
-      const studentMap = new Map<string, LoRecord>();
-      const latestLo = new LoRecord(event);
-      studentMap.set(event.user.id, latestLo);
-      this.studentByCourseEventMap.set(event.courseId, studentMap);
+    const courseArray = this.studentsByCourseList.value.find((lo: LoRecord[]) => lo[0].courseId === event.courseId);
+    if (!courseArray) {
+      const studentArray = new Array<LoRecord>();
+      studentArray.push(new LoRecord(event));
+      this.studentsByCourseList.value.push(studentArray);
     } else {
-      const loStudent = courseGroup.get(event.user.id);
-      if (loStudent) {
-        refreshLoRecord(loStudent, event);
+      const loStudent = courseArray.find((lo: LoRecord) => lo.user?.id === event.user.id);
+      if (!loStudent) {
+        courseArray.push(new LoRecord(event));
       } else {
-        courseGroup.set(event.user.id, new LoRecord(event));
+        refreshLoRecord(loStudent, event);
       }
     }
   },

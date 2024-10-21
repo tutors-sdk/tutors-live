@@ -2,23 +2,15 @@
   import "../app.postcss";
   import TutorsShell from "$lib/ui/app-shells/TutorsShell.svelte";
   import { presenceService } from "$lib/services/presence.svelte";
-  import AllCoursePresence from "$lib/ui/time/AllCoursePresence.svelte";
   import Metric from "$lib/ui/time/Metric.svelte";
-  import { SlideToggle } from "@skeletonlabs/skeleton";
-  import AllStudentPresence from "$lib/ui/time/AllStudentPresence.svelte";
+  import { TabGroup, Tab } from "@skeletonlabs/skeleton";
+  import Students from "$lib/ui/time/Students.svelte";
   import { computePosition, autoUpdate, flip, shift, offset, arrow } from "@floating-ui/dom";
   import { initializeStores, storePopup } from "@skeletonlabs/skeleton";
+  import Courses from "$lib/ui/time/Courses.svelte";
+  import CoursesGroup from "$lib/ui/time/CoursesGroup.svelte";
 
-  let listByCourse = false;
-  let listModeStr = "List By Student";
-  function switchMode() {
-    listByCourse = !listByCourse;
-    if (listByCourse) {
-      listModeStr = "List By Course";
-    } else {
-      listModeStr = "List By Student";
-    }
-  }
+  let tabSet: number = 1;
 
   presenceService.startGlobalPresenceService();
   initializeStores();
@@ -28,14 +20,26 @@
 <TutorsShell title="Tutors Live Stream">
   <div slot="header" class="hidden md:inline-block w-full">
     <div class="flex justify-end">
-      <SlideToggle onclick={switchMode} name="slider-label" background="bg-surface-300 dark:bg-surface-700">{listModeStr}</SlideToggle>
       <Metric value={presenceService.coursesOnlineList.value.length} title="Active Modules" />
       <Metric value={presenceService.studentsOnlineList.value.length} title="Active Students" />
     </div>
   </div>
-  {#if listByCourse}
-    <AllCoursePresence />
-  {:else}
-    <AllStudentPresence />
-  {/if}
+
+  <TabGroup>
+    <Tab bind:group={tabSet} name="tab1" value={1}>Modules</Tab>
+    <Tab bind:group={tabSet} name="tab2" value={2}>Students</Tab>
+    <Tab bind:group={tabSet} name="tab3" value={3}>Student Groups</Tab>
+
+    <svelte:fragment slot="panel">
+      <div class="flex flex-wrap justify-center p-4 m-4">
+        {#if tabSet === 1}
+          <Courses />
+        {:else if tabSet === 2}
+          <Students />
+        {:else if tabSet === 3}
+          <CoursesGroup />
+        {/if}
+      </div>
+    </svelte:fragment>
+  </TabGroup>
 </TutorsShell>
