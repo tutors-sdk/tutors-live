@@ -22,7 +22,6 @@ export const presenceService = {
 
   studentEventMap: new Map<string, LoRecord>(),
   courseEventMap: new Map<string, LoRecord>(),
-  studentByCourseEventMap: new Map<string, Map<string, LoRecord>>(),
 
   partyKitCourse: <PartySocket>{},
 

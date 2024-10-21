@@ -23,13 +23,14 @@
       <Metric value={presenceService.coursesOnlineList.value.length} title="Active Modules" />
       <Metric value={presenceService.studentsOnlineList.value.length} title="Active Students" />
     </div>
+    <TabGroup>
+      <Tab bind:group={tabSet} name="tab1" value={1}>Modules</Tab>
+      <Tab bind:group={tabSet} name="tab2" value={2}>Students</Tab>
+      <Tab bind:group={tabSet} name="tab3" value={3}>Student Groups</Tab>
+    </TabGroup>
   </div>
 
   <TabGroup>
-    <Tab bind:group={tabSet} name="tab1" value={1}>Modules</Tab>
-    <Tab bind:group={tabSet} name="tab2" value={2}>Students</Tab>
-    <Tab bind:group={tabSet} name="tab3" value={3}>Student Groups</Tab>
-
     <svelte:fragment slot="panel">
       <div class="flex flex-wrap justify-center p-4 m-4">
         {#if tabSet === 1}
