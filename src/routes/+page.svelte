@@ -12,7 +12,6 @@
 
   let tabSet: number = 1;
 
-  presenceService.startGlobalPresenceService();
   initializeStores();
   storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 </script>
@@ -20,8 +19,8 @@
 <TutorsShell title="Tutors Live Stream">
   <div slot="header" class="hidden md:inline-block w-full">
     <div class="flex justify-end">
-      <Metric value={presenceService.coursesOnlineList.value.length} title="Active Modules" />
-      <Metric value={presenceService.studentsOnlineList.value.length} title="Active Students" />
+      <Metric value={presenceService.coursesOnline.value.length} title="Active Modules" />
+      <Metric value={presenceService.studentsOnline.value.length} title="Active Students" />
     </div>
     <TabGroup>
       <Tab bind:group={tabSet} name="tab1" value={1}>Modules</Tab>

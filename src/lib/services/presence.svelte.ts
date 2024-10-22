@@ -16,9 +16,9 @@ if (PUBLIC_party_kit_main_room !== "XXX") {
 }
 
 export const presenceService = {
-  coursesOnlineList: rune<LoRecord[]>([]),
-  studentsOnlineList: rune<LoRecord[]>([]),
-  studentsByCourseList: rune<LoRecord[][]>([]),
+  coursesOnline: rune<LoRecord[]>([]),
+  studentsOnline: rune<LoRecord[]>([]),
+  studentsOnlineByCourse: rune<LoRecord[][]>([]),
 
   studentEventMap: new Map<string, LoRecord>(),
   courseEventMap: new Map<string, LoRecord>(),
@@ -26,11 +26,11 @@ export const presenceService = {
   partyKitCourse: <PartySocket>{},
 
   groupedStudentListener(event: any) {
-    const courseArray = this.studentsByCourseList.value.find((lo: LoRecord[]) => lo[0].courseId === event.courseId);
+    const courseArray = this.studentsOnlineByCourse.value.find((lo: LoRecord[]) => lo[0].courseId === event.courseId);
     if (!courseArray) {
       const studentArray = new Array<LoRecord>();
       studentArray.push(new LoRecord(event));
-      this.studentsByCourseList.value.push(studentArray);
+      this.studentsOnlineByCourse.value.push(studentArray);
     } else {
       const loStudent = courseArray.find((lo: LoRecord) => lo.user?.id === event.user.id);
       if (!loStudent) {
@@ -45,7 +45,7 @@ export const presenceService = {
     let studentEvent = this.studentEventMap.get(event.user.id);
     if (!studentEvent) {
       const latestLo = new LoRecord(event);
-      this.studentsOnlineList.value.push(latestLo);
+      this.studentsOnline.value.push(latestLo);
       this.studentEventMap.set(event.user.id, latestLo);
     } else {
       refreshLoRecord(studentEvent, event);
@@ -56,7 +56,7 @@ export const presenceService = {
     let courseEvent = this.courseEventMap.get(event.courseId);
     if (!courseEvent) {
       const latestLo = new LoRecord(event);
-      this.coursesOnlineList.value.push(latestLo);
+      this.coursesOnline.value.push(latestLo);
       this.courseEventMap.set(event.courseId, latestLo);
     } else {
       refreshLoRecord(courseEvent, event);
@@ -76,6 +76,21 @@ export const presenceService = {
   startGlobalPresenceService() {
     partyKitAll.addEventListener("message", (event) => {
       this.partyKitListener(event);
+    });
+  },
+
+  startCoursePresenceListener(courseId: string) {
+    const partyKitCourse = new PartySocket({
+      host: partyKitServer,
+      room: courseId
+    });
+    partyKitCourse.addEventListener("message", (event) => {
+      try {
+        const nextCourseEvent = JSON.parse(event.data);
+        this.groupedStudentListener(nextCourseEvent);
+      } catch (e) {
+        console.log(e);
+      }
     });
   }
 };
