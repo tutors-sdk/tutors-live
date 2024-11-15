@@ -13,7 +13,7 @@
           type: lo?.type,
           subtitle1: lo?.courseTitle,
           title: lo?.courseTitle,
-          subtitle2: lo?.title,
+          subtitle2: lo?.title + " (" + lo?.type + ")",
           img: lo?.img,
           icon: lo?.icon
         }}

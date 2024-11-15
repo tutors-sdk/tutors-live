@@ -12,6 +12,7 @@
           title: lo.courseTitle,
           type: lo.type,
           subtitle1: lo.title,
+          subtitle2: "(" + lo.type + ")",
           img: lo.img,
           icon: lo.icon
         }}
