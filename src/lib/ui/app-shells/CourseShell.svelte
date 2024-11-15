@@ -3,16 +3,13 @@
   import LayoutMenu from "$lib/ui/themes/menu/LayoutMenu.svelte";
   import TutorsTitle from "$lib/ui/navigators/titles/TutorsTitle.svelte";
   import Footer from "../navigators/footers/Footer.svelte";
-  import Navigator from "$lib/ui/navigators/Navigator.svelte";
-  export let title = "Tutors Open Source Project";
-  export let subTitle = "Open Web Learning Components";
 </script>
 
 <AppShell class="h-screen">
   <svelte:fragment slot="header">
     <AppBar background="bg-surface-100-800-token" shadow="none" class="h-20 justify-center border-surface-200 dark:border-surface-700">
       <svelte:fragment slot="lead">
-        <TutorsTitle {title} subtitle={subTitle} />
+        <TutorsTitle />
       </svelte:fragment>
       <svelte:fragment slot="trail">
         <span class="divider-vertical h-10 hidden lg:block"></span>

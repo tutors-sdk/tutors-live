@@ -1,11 +1,13 @@
 <script lang="ts">
   import Students from "$lib/ui/time/Students.svelte";
-  import { tabSet } from "$lib/runes";
+  import { tabSet, title, subTitle } from "$lib/runes";
   import { presenceService } from "$lib/services/presence.svelte";
   import TutorsShell from "$lib/ui/app-shells/TutorsShell.svelte";
 
   tabSet.value = 2;
   presenceService.startGlobalPresenceService();
+  title.value = "Tutors Live";
+  subTitle.value = "Latest Student Activity";
 </script>
 
 <TutorsShell title="Tutors Live Stream">

@@ -1,6 +1,6 @@
 <script lang="ts">
   import Catalogue from "$lib/ui/time/Catalogue.svelte";
-  import { tabSet } from "$lib/runes";
+  import { title, subTitle, tabSet } from "$lib/runes";
   import TutorsShell from "$lib/ui/app-shells/TutorsShell.svelte";
 
   tabSet.value = 4;
@@ -8,6 +8,8 @@
     data: any;
   }
   let { data }: Props = $props();
+  title.value = "Tutors Catalogue";
+  subTitle.value = "Popular Tutors Courses";
 </script>
 
 <TutorsShell title="Tutors Live Stream">

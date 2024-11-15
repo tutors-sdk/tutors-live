@@ -11,4 +11,7 @@ export const imageHeight = rune("h-36");
 export const textSize = rune("text-base");
 export const avatarWidth = rune("w-12");
 
+export const title = rune("Tutors Open Source Project");
+export const subTitle = rune("Open Web Learning Components");
+
 export let tabSet = rune(1);
