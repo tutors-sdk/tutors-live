@@ -3,9 +3,6 @@
   import LayoutMenu from "$lib/ui/themes/menu/LayoutMenu.svelte";
   import TutorsTitle from "$lib/ui/navigators/titles/TutorsTitle.svelte";
   import Footer from "../navigators/footers/Footer.svelte";
-  import Metric from "../time/Metric.svelte";
-  import { presenceService } from "$lib/services/presence.svelte";
-  import { tabSet } from "$lib/runes";
   import Navigator from "$lib/ui/navigators/Navigator.svelte";
   export let title = "Tutors Open Source Project";
   export let subTitle = "Open Web Learning Components";
@@ -17,9 +14,6 @@
       <svelte:fragment slot="lead">
         <TutorsTitle {title} subtitle={subTitle} />
       </svelte:fragment>
-      <slot name="header">
-        <Navigator />
-      </slot>
       <svelte:fragment slot="trail">
         <span class="divider-vertical h-10 hidden lg:block"></span>
         <LayoutMenu />
