@@ -26,6 +26,33 @@ export class LoRecord {
   }
 }
 
+export interface CatalogueEntry {
+  course_id: string;
+  visited_at: Date;
+  visit_count: number;
+  course_record: any;
+}
+
+export interface CourseRecord {
+  id: string;
+  title: string;
+  image: string;
+  icon: IconType;
+  credits: string;
+  lastVisited: Date;
+}
+
+export interface CardDetails {
+  route: string;
+  title: string;
+  type: string;
+  subtitle1?: string;
+  subtitle2?: string;
+  icon?: IconType;
+  img?: string;
+  student?: LoUser;
+}
+
 export function refreshLoRecord(loEvent: LoRecord, nextLoEvent: LoRecord) {
   loEvent.loRoute = `https://tutors.dev${nextLoEvent.loRoute}`;
   loEvent.title = nextLoEvent.title;

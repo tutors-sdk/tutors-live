@@ -24,6 +24,7 @@ export const presenceService = {
   courseEventMap: new Map<string, LoRecord>(),
 
   partyKitCourse: <PartySocket>{},
+  listeningAll: false,
 
   groupedStudentListener(event: any) {
     const courseArray = this.studentsOnlineByCourse.value.find((lo: LoRecord[]) => lo[0].courseId === event.courseId);
@@ -74,9 +75,12 @@ export const presenceService = {
   },
 
   startGlobalPresenceService() {
-    partyKitAll.addEventListener("message", (event) => {
-      this.partyKitListener(event);
-    });
+    if (!this.listeningAll) {
+      this.listeningAll = true;
+      partyKitAll.addEventListener("message", (event) => {
+        this.partyKitListener(event);
+      });
+    }
   },
 
   startCoursePresenceListener(courseId: string) {

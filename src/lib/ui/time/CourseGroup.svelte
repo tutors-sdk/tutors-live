@@ -1,7 +1,7 @@
 <script lang="ts">
   import { headingText, textSize } from "$lib/runes";
   import type { LoRecord } from "$lib/services/presence-types.svelte";
-  import StudentCard from "./StudentCard.svelte";
+  import Card from "./Card.svelte";
 
   export let los: LoRecord[];
 </script>
@@ -14,7 +14,17 @@
   </div>
   <div class="flex flex-wrap justify-center">
     {#each los as lo}
-      <StudentCard {lo}></StudentCard>
+      <Card
+        cardDetails={{
+          route: lo?.loRoute,
+          student: lo?.user,
+          title: lo?.courseTitle,
+          type: lo?.type,
+          subtitle1: lo?.title,
+          img: lo?.img,
+          icon: lo?.icon
+        }}
+      />
     {/each}
   </div>
 </div>

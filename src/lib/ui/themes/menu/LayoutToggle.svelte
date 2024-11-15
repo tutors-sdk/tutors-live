@@ -14,7 +14,7 @@
     } else {
       layout.value = "compacted";
       textSize.value = "text-xs";
-      headingText.value = "!text-md font-medium";
+      headingText.value = "!text-sm";
       cardWidths.value = "w-36 h-[13rem]";
       iconHeight.value = "90";
       imageHeight.value = "h-16";
