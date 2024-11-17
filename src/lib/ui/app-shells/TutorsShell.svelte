@@ -4,6 +4,7 @@
   import TutorsTitle from "$lib/ui/navigators/titles/TutorsTitle.svelte";
   import Footer from "../navigators/footers/Footer.svelte";
   import Navigator from "$lib/ui/navigators/Navigator.svelte";
+  import Stats from "../navigators/titles/Stats.svelte";
 </script>
 
 <AppShell class="h-screen">
@@ -13,9 +14,15 @@
         <TutorsTitle />
       </svelte:fragment>
       <slot name="header">
-        <Navigator />
+        <div class="flex justify-end items-end">
+          <Navigator />
+        </div>
       </slot>
       <svelte:fragment slot="trail">
+        <span class="divider-vertical h-10 hidden lg:block"></span>
+        <div class="">
+          <Stats />
+        </div>
         <span class="divider-vertical h-10 hidden lg:block"></span>
         <LayoutMenu />
         <span class="divider-vertical h-10 hidden lg:block"></span>

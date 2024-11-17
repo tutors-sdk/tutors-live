@@ -13,5 +13,7 @@ export const avatarWidth = rune("w-12");
 
 export const title = rune("Tutors Open Source Project");
 export const subTitle = rune("Open Web Learning Components");
+export const catalogueCount = rune(0);
+export const studentCount = rune(0);
 
 export let tabSet = rune(1);
