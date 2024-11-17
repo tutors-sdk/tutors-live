@@ -3,15 +3,11 @@
   import TutorsShell from "$lib/ui/app-shells/TutorsShell.svelte";
   import Courses from "$lib/ui/time/Courses.svelte";
   import { title, subTitle, tabSet } from "$lib/runes";
-  import { onMount } from "svelte";
-  import Navigator from "$lib/ui/navigators/Navigator.svelte"; // Add this import
 
-  onMount(() => {
-    tabSet.value = 1;
-  });
   presenceService.startGlobalPresenceService();
   title.value = "Tutors Live";
   subTitle.value = "Latest Tutors Course Activty";
+  tabSet.value = 1;
 </script>
 
 <TutorsShell title="Tutors Live Stream">

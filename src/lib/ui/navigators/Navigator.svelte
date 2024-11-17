@@ -1,40 +1,13 @@
 <script lang="ts">
   import { tabSet } from "$lib/runes";
-  import Icon from "../themes/icons/Icon.svelte";
+  import NavButton from "./NavButton.svelte";
 </script>
 
 <slot name="header">
-  <div class="flex flex-row items-center justify-center gap-8">
-    <a
-      href="/courses"
-      class="flex flex-col items-center hover:scale-110 transition-transform p-3 rounded-xl {tabSet.value === 1 ? 'text-primary scale-110 bg-gray-200 dark:bg-gray-600' : ''}"
-    >
-      <Icon type={"course"} height="30" />
-      <span class="text-sm text-bold">Courses</span>
-    </a>
-
-    <a
-      href="/students"
-      class="flex flex-col items-center hover:scale-110 transition-transform p-3 rounded-xl {tabSet.value === 2 ? 'text-primary scale-110 bg-gray-200 dark:bg-gray-600' : ''}"
-    >
-      <Icon type={"live"} height="30" />
-      <span class="text-sm text-bold">Students</span>
-    </a>
-
-    <a
-      href="/groups"
-      class="flex flex-col items-center hover:scale-110 transition-transform p-3 rounded-xl {tabSet.value === 3 ? 'text-primary scale-110 bg-gray-200 dark:bg-gray-600' : ''}"
-    >
-      <Icon type={"toc"} height="30" />
-      <span class="text-sm text-bold">Groups</span>
-    </a>
-
-    <a
-      href="/catalogue"
-      class="flex flex-col items-center hover:scale-110 transition-transform p-3 rounded-xl {tabSet.value === 4 ? 'text-primary scale-110 bg-gray-200 dark:bg-gray-600' : ''}"
-    >
-      <Icon type={"archive"} height="30" />
-      <span class="text-sm text-bold">Catalogue</span>
-    </a>
+  <div class="flex flex-row items-center justify-center gap-4">
+    <NavButton href="/courses" iconType="course" text="Courses" isActive={tabSet.value === 1} />
+    <NavButton href="/students" iconType="live" text="Students" isActive={tabSet.value === 2} />
+    <NavButton href="/groups" iconType="toc" text="Groups" isActive={tabSet.value === 3} />
+    <NavButton href="/catalogue" iconType="archive" text="Catalogue" isActive={tabSet.value === 4} />
   </div>
 </slot>

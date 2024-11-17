@@ -3,14 +3,11 @@
   import { presenceService } from "$lib/services/presence.svelte";
   import TutorsShell from "$lib/ui/app-shells/TutorsShell.svelte";
   import CoursesGroup from "$lib/ui/time/CoursesGroup.svelte";
-  import { onMount } from "svelte";
 
-  onMount(() => {
-    tabSet.value = 3;
-  });
   presenceService.startGlobalPresenceService();
   title.value = "Tutors Live";
   subTitle.value = "Students Grouped by Course";
+  tabSet.value = 3;
 </script>
 
 <TutorsShell title="Tutors Live Stream">
