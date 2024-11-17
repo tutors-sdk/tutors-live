@@ -33,14 +33,16 @@ export interface CatalogueEntry {
   course_record: any;
 }
 
-export interface CourseRecord {
+export type CourseVisit = {
   id: string;
   title: string;
-  image: string;
-  icon: IconType;
+  img?: string;
+  icon?: IconType;
+  lastVisit: Date;
   credits: string;
-  lastVisited: Date;
-}
+  visits?: number;
+  private: boolean;
+};
 
 export interface CardDetails {
   route: string;

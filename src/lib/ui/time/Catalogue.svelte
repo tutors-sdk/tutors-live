@@ -1,10 +1,10 @@
 <script lang="ts">
   import { tabSet } from "$lib/runes";
   import Card from "./Card.svelte";
-  import type { CourseRecord } from "$lib/services/presence-types.svelte";
+  import type { CourseVisit } from "$lib/services/presence-types.svelte";
 
   interface Props {
-    courseRecords: CourseRecord[];
+    courseRecords: CourseVisit[];
   }
   let { courseRecords = [] }: Props = $props();
   tabSet.value = 4;
@@ -19,7 +19,7 @@
           title: courseRecord?.title,
           type: "web",
           subtitle1: courseRecord?.credits,
-          img: courseRecord?.image,
+          img: courseRecord?.img,
           icon: courseRecord?.icon
         }}
       />
