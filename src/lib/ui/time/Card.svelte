@@ -2,13 +2,14 @@
   // import { Avatar } from "@skeletonlabs/skeleton-svelte";
   import Iconify from "@iconify/svelte";
   import Icon from "$lib/ui/themes/icons/Icon.svelte";
-  import { avatarWidth, cardWidths, headingText, iconHeight, imageHeight, textSize } from "$lib/runes";
+  import { avatarWidth, cardWidths, headingText, iconHeight, imageWidth, textSize } from "$lib/runes";
   import type { CardDetails } from "$lib/services/presence-types.svelte";
+  import { Avatar } from "@skeletonlabs/skeleton-svelte";
 
   export let cardDetails: CardDetails;
 </script>
 
-<a href={cardDetails.route} target="_blank" rel="noreferrer">
+<!-- <a href={cardDetails.route} target="_blank" rel="noreferrer">
   <div
     class="card bg-surface-50 border-[1px] border-y-8 border-primary-500 card-hover divide-surface-200-800 block divide-y overflow-hidden m-2 flex flex-col {cardWidths.value} bg-gray-100 dark:bg-gray-800"
   >
@@ -30,14 +31,14 @@
       <small class="opacity-60">{cardDetails.subtitle1}</small>
     </footer>
   </div>
-</a>
+</a> -->
 
-<!-- <a href={cardDetails.route} target="_blank" rel="noreferrer">
-  <div class="card !bg-surface-50 dark:!bg-surface-700 border-y-8 border-primary-500 m-2 {cardWidths.value} transition-all hover:scale-105">
+<a href={cardDetails.route} target="_blank" rel="noreferrer">
+  <div class="card !bg-surface-50 border-y-8 border-primary-500 m-2 {cardWidths.value} transition-all hover:scale-105">
     <div class="flex">
       <header class="card-header flex flex-row items-center justify-between p-3">
         {#if cardDetails.student}
-          <Avatar src={cardDetails.student.avatar} alt={cardDetails.student.fullName} class="mr-2" width={avatarWidth.value} />
+          <img src={cardDetails.student.avatar} alt={cardDetails.student.fullName} class="rounded-3xl {avatarWidth.value}" />
         {:else}
           <div class="line-clamp-2 flex-auto !text-lg font-semibold !text-black dark:!text-white {headingText.value}">
             {cardDetails.title}
@@ -52,7 +53,7 @@
         {#if cardDetails.icon}
           <Iconify icon={cardDetails.icon.type} color={cardDetails.icon.color} height={iconHeight.value} />
         {:else}
-          <Avatar src={cardDetails.img} alt={cardDetails.title} width={imageHeight.value} rounded=     "rounded-xl" background="none" />
+          <img src={cardDetails.img} alt={cardDetails.title} class={imageWidth.value} />
         {/if}
       </figure>
     </div>
@@ -69,4 +70,4 @@
       </div>
     </footer>
   </div>
-</a> -->
+</a>

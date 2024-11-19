@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { avatarWidth, cardWidths, headingText, iconHeight, imageHeight, layout, textSize } from "$lib/runes";
+  import { avatarWidth, cardWidths, headingText, iconHeight, imageWidth, layout, textSize } from "$lib/runes";
   import Icon from "$lib/ui/themes/icons/Icon.svelte";
 
   function toggleLayout() {
@@ -9,7 +9,7 @@
       headingText.value = "!text-lg font-semibold";
       cardWidths.value = "w-60 h-[21rem]";
       iconHeight.value = "180";
-      imageHeight.value = "h-32";
+      imageWidth.value = "w-36";
       avatarWidth.value = "w-12";
     } else {
       layout.value = "compacted";
@@ -17,7 +17,7 @@
       headingText.value = "!text-sm";
       cardWidths.value = "w-36 h-[13rem]";
       iconHeight.value = "90";
-      imageHeight.value = "h-16";
+      imageWidth.value = "w-16";
       avatarWidth.value = "w-10";
     }
   }
