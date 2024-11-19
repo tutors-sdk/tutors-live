@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Avatar } from "@skeletonlabs/skeleton";
+  // import { Avatar } from "@skeletonlabs/skeleton-svelte";
   import Iconify from "@iconify/svelte";
   import Icon from "$lib/ui/themes/icons/Icon.svelte";
   import { avatarWidth, cardWidths, headingText, iconHeight, imageHeight, textSize } from "$lib/runes";
@@ -9,6 +9,28 @@
 </script>
 
 <a href={cardDetails.route} target="_blank" rel="noreferrer">
+  <div class="card bg-surface-50 border-[1px] border-y-8 border-primary-500 card-hover divide-surface-200-800 block divide-y overflow-hidden m-2 flex flex-col {cardWidths.value}">
+    <header class="h-[200px] flex items-center justify-center">
+      {#if cardDetails.icon}
+        <Iconify icon={cardDetails.icon.type} color={cardDetails.icon.color} height={iconHeight.value} />
+      {:else}
+        <img src={cardDetails.img} class="w-12 w-full hue-rotate-90 object-scale-down h-full" alt="banner" />
+      {/if}
+    </header>
+
+    <article class="space-y-4 p-4 flex-grow text-center">
+      <div>
+        <h1 class={textSize.value}>{cardDetails.title}</h1>
+      </div>
+    </article>
+
+    <footer class="p-4 text-center">
+      <small class="opacity-60">{cardDetails.subtitle1}</small>
+    </footer>
+  </div>
+</a>
+
+<!-- <a href={cardDetails.route} target="_blank" rel="noreferrer">
   <div class="card !bg-surface-50 dark:!bg-surface-700 border-y-8 border-primary-500 m-2 {cardWidths.value} transition-all hover:scale-105">
     <div class="flex">
       <header class="card-header flex flex-row items-center justify-between p-3">
@@ -28,7 +50,7 @@
         {#if cardDetails.icon}
           <Iconify icon={cardDetails.icon.type} color={cardDetails.icon.color} height={iconHeight.value} />
         {:else}
-          <Avatar src={cardDetails.img} alt={cardDetails.title} width={imageHeight.value} rounded="rounded-xl" background="none" />
+          <Avatar src={cardDetails.img} alt={cardDetails.title} width={imageHeight.value} rounded=     "rounded-xl" background="none" />
         {/if}
       </figure>
     </div>
@@ -45,4 +67,4 @@
       </div>
     </footer>
   </div>
-</a>
+</a> -->

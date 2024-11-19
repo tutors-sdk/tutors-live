@@ -1,36 +1,42 @@
 <script lang="ts">
-  import { AppShell, AppBar, TabGroup, Tab } from "@skeletonlabs/skeleton";
-  import LayoutMenu from "$lib/ui/themes/menu/LayoutMenu.svelte";
   import TutorsTitle from "$lib/ui/navigators/titles/TutorsTitle.svelte";
   import Footer from "../navigators/footers/Footer.svelte";
   import Navigator from "$lib/ui/navigators/Navigator.svelte";
   import Stats from "../navigators/titles/Stats.svelte";
+  import { AppBar } from "@skeletonlabs/skeleton-svelte";
+  import LayoutMenu from "$lib/ui/themes/menu/LayoutMenu.svelte";
+  import MenuTest from "../themes/menu/MenuTest.svelte";
+
+  interface Props {
+    children: import("svelte").Snippet;
+  }
+  let { children }: Props = $props();
 </script>
 
-<AppShell class="h-screen">
-  <svelte:fragment slot="header">
-    <AppBar background="bg-surface-100-800-token" shadow="none" class="h-20 justify-center border-surface-200 dark:border-surface-700">
-      <svelte:fragment slot="lead">
+<div class="grid h-screen grid-rows-[auto_1fr_auto]">
+  <header class="sticky top-0 z-10 backdrop-blur-sm p-4">
+    <AppBar background="bg-surface-100-800" shadow="none" classes="h-16 justify-center border-surface-200 dark:border-surface-700">
+      {#snippet lead()}
         <TutorsTitle />
-      </svelte:fragment>
-      <slot name="header">
+      {/snippet}
+      {#snippet trail()}
         <div class="flex justify-end items-end">
           <Navigator />
         </div>
-      </slot>
-      <svelte:fragment slot="trail">
-        <span class="divider-vertical h-10 hidden lg:block"></span>
+        <span class="vr border-l-2"></span>
         <div class="">
           <Stats />
         </div>
-        <span class="divider-vertical h-10 hidden lg:block"></span>
-        <LayoutMenu />
-        <span class="divider-vertical h-10 hidden lg:block"></span>
-      </svelte:fragment>
+        <span class="vr border-l-2"></span>
+        <MenuTest />
+        <span class="vr border-l-2"></span>
+      {/snippet}
     </AppBar>
-  </svelte:fragment>
-  <slot />
-  <svelte:fragment slot="pageFooter">
+  </header>
+  <main class="p-2 space-y-4 overflow-y-auto">
+    {@render children()}
+  </main>
+  <footer class="p-4">
     <Footer />
-  </svelte:fragment>
-</AppShell>
+  </footer>
+</div>
