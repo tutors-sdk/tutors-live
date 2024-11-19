@@ -5,7 +5,6 @@
   import Stats from "../navigators/titles/Stats.svelte";
   import { AppBar } from "@skeletonlabs/skeleton-svelte";
   import LayoutMenu from "$lib/ui/themes/menu/LayoutMenu.svelte";
-  import MenuTest from "../themes/menu/MenuTest.svelte";
 
   interface Props {
     children: import("svelte").Snippet;
@@ -28,7 +27,7 @@
           <Stats />
         </div>
         <span class="vr border-l-2"></span>
-        <MenuTest />
+        <LayoutMenu />
         <span class="vr border-l-2"></span>
       {/snippet}
     </AppBar>

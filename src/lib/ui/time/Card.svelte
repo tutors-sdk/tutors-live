@@ -9,7 +9,9 @@
 </script>
 
 <a href={cardDetails.route} target="_blank" rel="noreferrer">
-  <div class="card bg-surface-50 border-[1px] border-y-8 border-primary-500 card-hover divide-surface-200-800 block divide-y overflow-hidden m-2 flex flex-col {cardWidths.value}">
+  <div
+    class="card bg-surface-50 border-[1px] border-y-8 border-primary-500 card-hover divide-surface-200-800 block divide-y overflow-hidden m-2 flex flex-col {cardWidths.value} bg-gray-100 dark:bg-gray-800"
+  >
     <header class="h-[200px] flex items-center justify-center">
       {#if cardDetails.icon}
         <Iconify icon={cardDetails.icon.type} color={cardDetails.icon.color} height={iconHeight.value} />
