@@ -1,34 +1,16 @@
-import { join } from "path";
-import forms from "@tailwindcss/forms";
 import type { Config } from "tailwindcss";
-import { skeleton } from "@skeletonlabs/tw-plugin";
-import { tutors } from "./src/lib/ui/themes/styles/tutors";
-import { dyslexia } from "./src/lib/ui/themes/styles/dyslexia";
-import typography from "@tailwindcss/typography";
+import { skeleton, contentPath } from "@skeletonlabs/skeleton/plugin";
+import * as themes from "@skeletonlabs/skeleton/themes";
 
-const config = {
-  mode: "jit",
-  content: ["./src/**/*.{html,js,svelte,ts}", "./src/**/**/*.{html,js,svelte,ts}", join(require.resolve("@skeletonlabs/skeleton"), "../**/*.{html,js,svelte,ts}")],
-  safelist: [
-    {
-      pattern: /border|text/
-    }
-  ],
+export default {
+  content: ["./src/**/*.{html,js,svelte,ts}", contentPath(import.meta.url, "svelte")],
+  theme: {
+    extend: {}
+  },
   plugins: [
-    forms,
-    typography,
     skeleton({
-      themes: {
-        custom: [tutors, dyslexia],
-        preset: [
-          { name: "skeleton", enhancements: true },
-          { name: "seafoam", enhancements: true },
-          { name: "vintage", enhancements: true }
-        ]
-      }
+      // NOTE: each theme included will be added to your CSS bundle
+      themes: [themes.cerberus, themes.rose]
     })
-  ],
-  darkMode: "class"
+  ]
 } satisfies Config;
-
-export default config;
