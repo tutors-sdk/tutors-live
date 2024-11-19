@@ -10,7 +10,7 @@
   tabSet.value = 1;
 </script>
 
-<TutorsShell title="Tutors Live Stream">
+<TutorsShell>
   <div class="flex flex-wrap justify-center p-4 m-4">
     <Courses />
   </div>
