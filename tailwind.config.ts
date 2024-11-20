@@ -6,6 +6,11 @@ import tutors from "./src/lib/ui/themes/styles/tutors";
 export default {
   darkMode: "selector",
   content: ["./src/**/*.{html,js,svelte,ts}", contentPath(import.meta.url, "svelte")],
+  safelist: [
+    {
+      pattern: /border|text |preset-filled/
+    }
+  ],
   theme: {
     extend: {}
   },

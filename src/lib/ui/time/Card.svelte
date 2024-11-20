@@ -5,6 +5,7 @@
   import { avatarWidth, cardWidths, headingText, iconHeight, imageWidth, textSize } from "$lib/runes";
   import type { CardDetails } from "$lib/services/presence-types.svelte";
   import { Avatar } from "@skeletonlabs/skeleton-svelte";
+  import { getTypeColour } from "../themes/styles/icon-lib.svelte";
 
   export let cardDetails: CardDetails;
 </script>
@@ -34,7 +35,11 @@
 </a> -->
 
 <a href={cardDetails.route} target="_blank" rel="noreferrer">
-  <div class="card !bg-surface-50 border-y-8 border-primary-500 m-2 {cardWidths.value} transition-all hover:scale-105">
+  <div
+    class="card preset-filled-{getTypeColour(cardDetails.type)}-50-950 border-[1px] border-y-8 border-{getTypeColour(
+      cardDetails.type
+    )}-500 m-2 {cardWidths.value} transition-all hover:scale-105"
+  >
     <div class="flex">
       <header class="card-header flex flex-row items-center justify-between p-3">
         {#if cardDetails.student}
