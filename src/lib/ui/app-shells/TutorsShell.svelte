@@ -13,7 +13,7 @@
 </script>
 
 <div class="grid h-screen grid-rows-[auto_1fr_auto]">
-  <header class="sticky top-0 z-10 backdrop-blur-sm p-4 bg-surface-100 dark:bg-surface-900">
+  <header class="sticky top-0 backdrop-blur-sm p-4 bg-surface-100 dark:bg-surface-900">
     <AppBar background="bg-surface-100-800" shadow="none" classes="h-16 justify-center border-surface-200 dark:border-surface-700">
       {#snippet lead()}
         <TutorsTitle />

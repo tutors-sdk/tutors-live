@@ -21,7 +21,7 @@
   }
 </script>
 
-<Popover bind:open={openState} positioning={{ placement: "top" }} triggerBase="btn preset-tonal" contentBase="card bg-surface-50 p-4 space-y-4 max-w-[320px]">
+<Popover bind:open={openState} positioning={{ placement: "top" }} triggerBase="btn preset-tonal" contentBase="card bg-surface-50 m-4space-y-4 max-w-[320px] z-[100">
   {#snippet trigger()}
     <Icon type="dark" />
     <span class="hidden text-sm font-bold lg:block">Layout <span class="pl-2 opacity-50">▾</span></span>{/snippet}
@@ -29,10 +29,10 @@
     <nav class="card-body card list-nav w-56 space-y-4 p-4 shadow-lg bg-gray-100 dark:bg-gray-800" data-popup="design">
       <h6>Toggles</h6>
       <ul>
-        <li class="option !p-0">
+        <li class="option !p-0v hover:preset-tonal">
           <DarkModeToggle />
         </li>
-        <li class="option !p-0">
+        <li class="option !p-0 hover:preset-tonal">
           <LayoutToggle />
         </li>
       </ul>
@@ -41,7 +41,7 @@
       <ul class="list">
         {#each themes as theme}
           <li class="option !p-0">
-            <button class="btn flex w-full justify-between bg-surface-100-800={theme === currentTheme.value}" onclick={() => setTheme(theme)}>
+            <button class="btn flex w-full justify-between hover:preset-tonal {theme === currentTheme.value ? 'preset-tonal' : ''}" onclick={() => setTheme(theme)}>
               <span class="flex-none">{theme}</span>
             </button>
           </li>
