@@ -1,6 +1,6 @@
 <script lang="ts">
   import { tabSet } from "$lib/runes";
-  import Card from "./Card.svelte";
+  import Card from "../themes/card/Card.svelte";
   import type { CourseVisit } from "$lib/services/presence-types.svelte";
 
   interface Props {
