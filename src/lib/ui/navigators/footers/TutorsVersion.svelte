@@ -3,7 +3,7 @@
 </script>
 
 <a href="https://tutors.dev" target="_blank" rel="noopener noreferrer">
-  <p class="pl-4">
+  <p class="pl-4 text-xs">
     Tutors v{version}
   </p>
 </a>

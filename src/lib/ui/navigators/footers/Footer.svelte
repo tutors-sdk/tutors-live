@@ -5,8 +5,8 @@
   import TutorsVersion from "./TutorsVersion.svelte";
 </script>
 
-<div class="bg-surface-100-800-token border-t-[1px] border-surface-200-700-token bottom-0 mt-2">
-  <div class="mx-auto w-11/12 py-4">
+<div class="bg-surface-100 dark:bg-surface-950 border-t-[1px] border-surface-200-700 bottom-0 mt-2">
+  <div class="mx-auto w-11/12 py-2">
     <div class="flex grid-flow-col items-center">
       <div class="inline-flex flex-1">
         <TutorsIcon />

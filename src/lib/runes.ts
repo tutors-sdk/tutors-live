@@ -4,6 +4,7 @@ export const layout = rune("expanded");
 
 export const currentTheme = rune("tutors");
 
+export const cardHeight = rune("320px");
 export const headingText = rune("!text-lg font-semibold");
 export const cardWidths = rune("w-60 h-[21rem]");
 export const iconHeight = rune("180");

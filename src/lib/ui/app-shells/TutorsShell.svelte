@@ -13,8 +13,8 @@
 </script>
 
 <div class="grid h-screen grid-rows-[auto_1fr_auto]">
-  <header class="sticky top-0 backdrop-blur-sm p-4 bg-surface-100 dark:bg-surface-900">
-    <AppBar background="bg-surface-100-800" shadow="none" classes="h-16 justify-center border-surface-200 dark:border-surface-700">
+  <header class="sticky top-0 backdrop-blur-sm p-4 bg-surface-100 dark:bg-surface-950">
+    <AppBar shadow="none" classes="bg-surface-100 dark:bg-surface-950 h-14 justify-center border-surface-200 dark:border-surface-700">
       {#snippet lead()}
         <TutorsTitle />
       {/snippet}
@@ -32,10 +32,10 @@
       {/snippet}
     </AppBar>
   </header>
-  <main class="p-2 space-y-4 overflow-y-auto">
+  <main class="overflow-y-auto">
     {@render children()}
   </main>
-  <footer class="p-4">
+  <footer>
     <Footer />
   </footer>
 </div>

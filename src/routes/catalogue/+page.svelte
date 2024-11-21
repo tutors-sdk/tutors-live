@@ -12,8 +12,8 @@
   subTitle.value = "Popular Tutors Courses";
 </script>
 
-<TutorsShell title="Tutors Live Stream">
-  <div class="flex flex-wrap justify-center p-4 m-4">
+<TutorsShell>
+  <div class="flex flex-wrap justify-center p-2 m-2">
     <Catalogue courseRecords={data.courseRecords} />
   </div>
 </TutorsShell>

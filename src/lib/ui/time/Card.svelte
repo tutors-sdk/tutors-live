@@ -1,7 +1,7 @@
 <script lang="ts">
   import Iconify from "@iconify/svelte";
   import Icon from "$lib/ui/themes/icons/Icon.svelte";
-  import { avatarWidth, cardWidths, headingText, iconHeight, imageWidth, textSize } from "$lib/runes";
+  import { avatarWidth, cardHeight, cardWidths, headingText, iconHeight, imageWidth, textSize } from "$lib/runes";
   import type { CardDetails } from "$lib/services/presence-types.svelte";
   import { getTypeColour } from "../themes/styles/icon-lib.svelte";
 
@@ -12,7 +12,7 @@
   <div
     class="card preset-filled-{getTypeColour(cardDetails.type)}-50-950 border-[1px] border-y-8 border-{getTypeColour(
       cardDetails.type
-    )}-500 m-2 {cardWidths.value} transition-all hover:scale-105 h-[320px] flex flex-col"
+    )}-500 m-2 {cardWidths.value} transition-all hover:scale-105 h-[{cardHeight.value}] flex flex-col"
   >
     <div class="flex">
       <header class="card-header flex flex-row items-center justify-between p-3">
