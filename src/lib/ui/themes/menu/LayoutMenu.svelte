@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Popover } from "@skeletonlabs/skeleton-svelte";
-  import { setIconLibForTheme, themes } from "../styles/icon-lib.svelte";
+  import { setIconLibForTheme, setTheme, themes } from "../styles/icon-lib.svelte";
   import Icon from "../icons/Icon.svelte";
   import { currentTheme } from "$lib/runes";
   import DarkModeToggle from "./DarkModeToggle.svelte";
@@ -12,12 +12,8 @@
     openState = false;
   }
 
-  function setTheme(theme: string): void {
-    currentTheme.value = theme;
-    document.body.setAttribute("data-theme", currentTheme.value);
-    localStorage.theme = currentTheme.value;
-
-    setIconLibForTheme(currentTheme.value);
+  function changeTheme(theme: string): void {
+    setTheme(theme);
   }
 </script>
 
@@ -41,7 +37,7 @@
       <ul class="list">
         {#each themes as theme}
           <li class="option !p-0">
-            <button class="btn flex w-full justify-between hover:preset-tonal {theme === currentTheme.value ? 'preset-tonal' : ''}" onclick={() => setTheme(theme)}>
+            <button class="btn flex w-full justify-between hover:preset-tonal {theme === currentTheme.value ? 'preset-tonal' : ''}" onclick={() => changeTheme(theme)}>
               <span class="flex-none">{theme}</span>
             </button>
           </li>
