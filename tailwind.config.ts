@@ -17,7 +17,7 @@ export default {
   plugins: [
     skeleton({
       // NOTE: each theme included will be added to your CSS bundle
-      themes: [themes.cerberus, themes.rose, themes.nosh, themes.mona, themes.nosh, themes.fennec, tutors]
+      themes: [themes.cerberus, themes.rose, themes.nosh, themes.mona, themes.nosh, themes.fennec, tutors, themes.concord, themes.nouveau]
     })
   ]
 } satisfies Config;
