@@ -3,12 +3,13 @@ import { rune } from "./services/utils/runes.svelte";
 export const layout = rune("expanded");
 
 export const currentTheme = rune("tutors");
+export const lightMode = rune("light");
 
-export const cardHeight = rune("320px");
+export const cardHeight = rune("380px");
 export const headingText = rune("!text-lg font-semibold");
 export const cardWidths = rune("w-60 h-[21rem]");
-export const iconHeight = rune("180");
-export const imageWidth = rune("w-36");
+export const iconHeight = rune("140");
+export const imageHeight = rune("h-32");
 export const textSize = rune("text-base");
 export const avatarWidth = rune("w-12");
 

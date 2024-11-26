@@ -1,6 +1,6 @@
 <script lang="ts">
   import { subTitle, title } from "$lib/runes";
-  import CourseShell from "$lib/ui/app-shells/CourseShell.svelte";
+  import TutorsShell from "$lib/ui/app-shells/TutorsShell.svelte";
   import CoursesGroup from "$lib/ui/time/CoursesGroup.svelte";
   interface Props {
     data: any;
@@ -10,8 +10,8 @@
   subTitle.value = "Latest Student Activity";
 </script>
 
-<CourseShell title="Tutors Live Stream">
+<TutorsShell>
   <div class="flex flex-wrap justify-center p-4 m-4">
     <CoursesGroup />
   </div>
-</CourseShell>
+</TutorsShell>

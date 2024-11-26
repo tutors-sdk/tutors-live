@@ -50,9 +50,11 @@ export interface CardDetails {
   type: string;
   subtitle1?: string;
   subtitle2?: string;
+  summary?: string;
   icon?: IconType;
   img?: string;
   student?: LoUser;
+  video?: string;
 }
 
 export function refreshLoRecord(loEvent: LoRecord, nextLoEvent: LoRecord) {

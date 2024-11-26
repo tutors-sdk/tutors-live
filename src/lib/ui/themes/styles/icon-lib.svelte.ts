@@ -1,5 +1,5 @@
-import { currentTheme } from "$lib/runes";
-import type { IconType } from "$lib/services/presence-types.svelte";
+import { currentTheme, lightMode } from "$lib/runes";
+
 import { FluentIconLib } from "../icons/fluent-icons";
 import { HeroIconLib } from "../icons/hero-icons";
 
@@ -17,15 +17,21 @@ export const themeIcons = {
   cerberus: HeroIconLib
 };
 
+export function setDisplayMode(mode: string): void {
+  lightMode.value = mode;
+  localStorage.modeCurrent = mode;
+  if (mode === "dark") {
+    document.body.classList.add("dark");
+  } else {
+    document.body.classList.remove("dark");
+  }
+}
+
 export function setTheme(theme: string): void {
   currentTheme.value = theme;
   document.body.setAttribute("data-theme", currentTheme.value);
   localStorage.theme = currentTheme.value;
   setIconLibForTheme(currentTheme.value);
-
-  if (localStorage.modeCurrent === "dark") {
-    document.body.classList.toggle("dark");
-  }
 }
 
 export function setIconLibForTheme(theme: string) {

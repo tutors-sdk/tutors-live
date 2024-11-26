@@ -4,7 +4,7 @@
   import Navigator from "$lib/ui/navigators/Navigator.svelte";
   import Stats from "../navigators/titles/Stats.svelte";
   import { AppBar } from "@skeletonlabs/skeleton-svelte";
-  import LayoutMenu from "$lib/ui/themes/menu/LayoutMenu.svelte";
+  import LayoutMenu from "../themes/LayoutMenu.svelte";
 
   interface Props {
     children: import("svelte").Snippet;
