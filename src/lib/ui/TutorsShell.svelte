@@ -1,10 +1,10 @@
 <script lang="ts">
   import TutorsTitle from "$lib/ui/navigators/titles/TutorsTitle.svelte";
-  import Footer from "../navigators/footers/Footer.svelte";
+  import Footer from "./navigators/footers/Footer.svelte";
   import Navigator from "$lib/ui/navigators/Navigator.svelte";
-  import Stats from "../navigators/titles/Stats.svelte";
+  import Stats from "./navigators/titles/Stats.svelte";
   import { AppBar } from "@skeletonlabs/skeleton-svelte";
-  import LayoutMenu from "../themes/LayoutMenu.svelte";
+  import LayoutMenu from "./themes/LayoutMenu.svelte";
   import { presenceService } from "$lib/services/presence.svelte";
 
   interface Props {
