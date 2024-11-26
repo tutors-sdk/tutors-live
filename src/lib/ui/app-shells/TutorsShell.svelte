@@ -5,6 +5,7 @@
   import Stats from "../navigators/titles/Stats.svelte";
   import { AppBar } from "@skeletonlabs/skeleton-svelte";
   import LayoutMenu from "../themes/LayoutMenu.svelte";
+  import { presenceService } from "$lib/services/presence.svelte";
 
   interface Props {
     children: import("svelte").Snippet;
@@ -19,13 +20,15 @@
         <TutorsTitle />
       {/snippet}
       {#snippet trail()}
-        <div class="flex justify-end items-end">
-          <Navigator />
-        </div>
-        <span class="vr border-l-2"></span>
-        <div class="">
-          <Stats />
-        </div>
+        {#if presenceService.listeningForCourse.value === ""}
+          <div class="flex justify-end items-end">
+            <Navigator />
+          </div>
+          <span class="vr border-l-2"></span>
+          <div class="">
+            <Stats />
+          </div>
+        {/if}
         <span class="vr border-l-2"></span>
         <LayoutMenu />
         <span class="vr border-l-2"></span>

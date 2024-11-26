@@ -3,7 +3,12 @@ import { currentTheme, lightMode } from "$lib/runes";
 import { FluentIconLib } from "../icons/fluent-icons";
 import { HeroIconLib } from "../icons/hero-icons";
 
-let StandardIconLib = FluentIconLib;
+export type IconType = {
+  type: string;
+  color: string;
+};
+
+let StandardIconLib: { [key: string]: IconType } = FluentIconLib;
 export const themes = ["tutors", "nouveau", "concord", "nosh", "rose", "fennec", "mona", "cerberus"];
 
 export const themeIcons = {
@@ -18,6 +23,9 @@ export const themeIcons = {
 };
 
 export function setDisplayMode(mode: string): void {
+  if (!mode) {
+    mode = "light";
+  }
   lightMode.value = mode;
   localStorage.modeCurrent = mode;
   if (mode === "dark") {
@@ -39,7 +47,12 @@ export function setIconLibForTheme(theme: string) {
 }
 
 export function getIcon(type: string): IconType {
-  return StandardIconLib[type];
+  if (StandardIconLib[type]) {
+    return StandardIconLib[type];
+  } else {
+    console.log("No type found for icon", type);
+    return StandardIconLib.tutors;
+  }
 }
 
 export function addIcon(type: string, icon: IconType) {

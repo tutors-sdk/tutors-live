@@ -4,6 +4,7 @@
   import { onMount } from "svelte";
   import "../app.postcss";
   import { setTheme } from "$lib/ui/themes/styles/icon-lib.svelte";
+  import TutorsShell from "$lib/ui/app-shells/TutorsShell.svelte";
 
   interface Props {
     children: import("svelte").Snippet;
@@ -21,4 +22,8 @@
   });
 </script>
 
-{@render children()}
+<TutorsShell>
+  <div class="flex flex-wrap justify-center p-4 m-4">
+    {@render children()}
+  </div>
+</TutorsShell>
