@@ -14,7 +14,8 @@ export async function getCatalogue() {
       throw error;
     }
 
-    return data as Array<CatalogueEntry>;
+    let catalogue = data as Array<CatalogueEntry>;
+    return catalogue;
   } catch (error) {
     console.error("Error fetching courses:", error);
     return [];

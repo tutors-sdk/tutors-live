@@ -16,6 +16,7 @@ if (PUBLIC_party_kit_main_room !== "XXX") {
 }
 
 export const presenceService = {
+  listeningForCourse: rune<string>(""),
   coursesOnline: rune<LoRecord[]>([]),
   studentsOnline: rune<LoRecord[]>([]),
   studentsOnlineByCourse: rune<LoRecord[][]>([]),
@@ -91,6 +92,7 @@ export const presenceService = {
     partyKitCourse.addEventListener("message", (event) => {
       try {
         const nextCourseEvent = JSON.parse(event.data);
+        this.listeningForCourse.value = nextCourseEvent.courseTitle;
         this.groupedStudentListener(nextCourseEvent);
       } catch (e) {
         console.log(e);

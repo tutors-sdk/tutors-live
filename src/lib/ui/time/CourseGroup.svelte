@@ -1,7 +1,7 @@
 <script lang="ts">
   import { headingText, textSize } from "$lib/runes";
   import type { LoRecord } from "$lib/services/presence-types.svelte";
-  import Card from "./Card.svelte";
+  import Card from "../themes/card/Card.svelte";
 
   export let los: LoRecord[];
 </script>

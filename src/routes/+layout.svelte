@@ -3,21 +3,27 @@
   import { getCatalogueCount, getStudentCount } from "$lib/services/catalogue";
   import { onMount } from "svelte";
   import "../app.postcss";
-  import { computePosition, autoUpdate, flip, shift, offset, arrow } from "@floating-ui/dom";
-  import { initializeStores, storePopup } from "@skeletonlabs/skeleton";
+  import { setTheme } from "$lib/ui/themes/styles/icon-lib.svelte";
+  import TutorsShell from "$lib/ui/app-shells/TutorsShell.svelte";
 
   interface Props {
     children: import("svelte").Snippet;
   }
   let { children }: Props = $props();
 
-  initializeStores();
-  storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
-
   onMount(async () => {
     catalogueCount.value = await getCatalogueCount();
     studentCount.value = await getStudentCount();
+    if (localStorage.theme) {
+      setTheme(localStorage.theme);
+    } else {
+      setTheme("tutors");
+    }
   });
 </script>
 
-{@render children()}
+<TutorsShell>
+  <div class="flex flex-wrap justify-center p-4 m-4">
+    {@render children()}
+  </div>
+</TutorsShell>

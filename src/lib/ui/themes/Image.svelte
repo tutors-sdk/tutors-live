@@ -1,15 +1,18 @@
 <script lang="ts">
   import type { Lo } from "$lib/services/models/lo-types";
   import Iconify from "@iconify/svelte";
-  import { Avatar } from "@skeletonlabs/skeleton";
 
-  export let lo: Lo;
-  export let miniImage = false;
-  let imageHeight = "h-48";
-  let iconHeight = "180";
+  interface Props {
+    lo: Lo;
+    miniImage?: boolean;
+  }
+
+  let { lo, miniImage = false }: Props = $props();
+  let imageHeight = $state("h-32");
+  let iconHeight = $state("180");
 
   if (miniImage) {
-    imageHeight = "h-10";
+    imageHeight = "h-12";
     iconHeight = "48";
   }
 </script>
@@ -17,5 +20,5 @@
 {#if lo?.icon}
   <Iconify icon={lo?.icon.type} color={lo.icon.color} height={iconHeight} />
 {:else}
-  <Avatar src={lo?.img} alt={lo?.title} width={imageHeight} rounded="rounded-xl" background="none" />
+  <img src={lo?.img} alt={lo?.title} class={imageHeight} />
 {/if}
