@@ -25,7 +25,7 @@
             <Navigator />
           </div>
           <span class="vr border-l-2"></span>
-          <div class="">
+          <div class="hidden md:block">
             <Stats />
           </div>
         {/if}
