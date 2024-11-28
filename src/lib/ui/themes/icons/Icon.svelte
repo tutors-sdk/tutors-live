@@ -55,7 +55,7 @@
   {/if}
 {/snippet}
 
-{#if tip}
+<!-- {#if tip}
   <Tooltip positioning={{ placement: "top" }} triggerBase="underline" contentBase="card preset-filled p-4 text-sm" openDelay={400}>
     {#snippet trigger()}
       {@render displayIcon()}
@@ -64,6 +64,6 @@
       {tip}
     {/snippet}
   </Tooltip>
-{:else}
-  {@render displayIcon()}
-{/if}
+{:else} -->
+{@render displayIcon()}
+<!-- {/if} -->
