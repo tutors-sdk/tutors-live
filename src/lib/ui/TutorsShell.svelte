@@ -17,7 +17,9 @@
   <header class="sticky top-0 backdrop-blur-sm p-4 bg-surface-100 dark:bg-surface-950">
     <AppBar shadow="none" classes="bg-surface-100 dark:bg-surface-950 h-14 justify-center border-surface-200 dark:border-surface-700">
       {#snippet lead()}
-        <TutorsTitle />
+        <div class="hidden md:block">
+          <TutorsTitle />
+        </div>
       {/snippet}
       {#snippet trail()}
         {#if presenceService.listeningForCourse.value === ""}
@@ -30,8 +32,10 @@
           </div>
         {/if}
         <span class="vr border-l-2"></span>
-        <LayoutMenu />
-        <span class="vr border-l-2"></span>
+        <div class="hidden md:block">
+          <LayoutMenu />
+        </div>
+        <span class="vr border-l-2 hidden md:block"></span>
       {/snippet}
     </AppBar>
   </header>

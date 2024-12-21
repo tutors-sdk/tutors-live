@@ -11,4 +11,6 @@
   subTitle.value = "Popular Tutors Courses";
 </script>
 
-<Catalogue courseRecords={data.courseRecords} />
+<div class="w-full">
+  <Catalogue courseRecords={data.courseRecords} />
+</div>
